@@ -11,15 +11,6 @@
 
 <br />
 
-<div align="center">
-  <a href="https://platforma-kod.vercel.app">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="public/next.svg">
-      <img alt="Платформа К-О-Д" src="public/next.svg" width="180" height="auto">
-    </picture>
-  </a>
-</div>
-
 <h1 align="center">
   Платформа К-О-Д
   <br />
@@ -30,6 +21,12 @@
   <strong>Современная лендинг-страница</strong> для платформы автоматизации бизнес-процессов.
   <br />
   Разработана как <strong>портфолио-проект</strong>, демонстрирующий владение современным стеком веб-разработки.
+</p>
+
+<br />
+
+<p align="center">
+  <img src="hero_lp.png" alt="Платформа К-О-Д — Hero Section" width="100%" style="border-radius: 12px; max-width: 900px;" />
 </p>
 
 <br />
@@ -51,21 +48,10 @@
 | ♿ | **Accessibility** | ARIA-атрибуты, focus-стили, семантическая вёрстка |
 | 🔍 | **SEO** | JSON-LD разметка, Open Graph, Twitter Cards, sitemap |
 
-## 📸 Скриншоты
+## 📸 Полный скриншот сайта
 
 <div align="center">
-  <table>
-    <tr>
-      <td align="center" width="50%">
-        <strong>Главный экран (Hero)</strong><br />
-        <img src="hero_lp.png" alt="Hero Section" width="100%" style="border-radius: 12px;" />
-      </td>
-      <td align="center" width="50%">
-        <strong>Полный сайт</strong><br />
-        <img src="lp_screen.png" alt="Full Page" width="100%" style="border-radius: 12px;" />
-      </td>
-    </tr>
-  </table>
+  <img src="lp_screen.png" alt="Full Page Screenshot" width="100%" style="border-radius: 12px; max-width: 900px;" />
 </div>
 
 ## 🚀 Технологии
