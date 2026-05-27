@@ -51,7 +51,7 @@
 ## 📸 Полный скриншот сайта
 
 <div align="center">
-  <img src="lp_screen.png" alt="Full Page Screenshot" width="100%" style="border-radius: 12px; max-width: 900px;" />
+  <img src="lp_screen1.png" alt="Full Page Screenshot" width="100%" style="border-radius: 12px; max-width: 900px;" />
 </div>
 
 ## 🚀 Технологии
