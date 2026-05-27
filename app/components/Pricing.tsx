@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { TrendingUp, Shield, Users, Check, Zap } from 'lucide-react'
+import { Check } from 'lucide-react'
 
 const formatPrice = (price: number) => 
   new Intl.NumberFormat('ru-RU', { 
@@ -13,11 +13,6 @@ const formatPrice = (price: number) =>
 export default function Pricing() {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly')
   const [popularPlan, setPopularPlan] = useState('')
-  const [showModal, setShowModal] = useState(false)
-  const [name, setName] = useState('')
-  const [phone, setPhone] = useState('')
-  const [email, setEmail] = useState('')
-  const [formSubmitted, setFormSubmitted] = useState(false)
 
   const plans = [
     {
@@ -60,27 +55,8 @@ export default function Pricing() {
     },
   ]
 
-  const currentPlan = popularPlan ? plans.find(p => p.id === popularPlan) : plans[0]
-
   const toggleBilling = () => {
     setBillingCycle(prev => prev === 'monthly' ? 'yearly' : 'monthly')
-  }
-
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)
-  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => setPhone(e.target.value)
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Simple validation
-    if (name && phone && email) {
-      setShowModal(false)
-      setFormSubmitted(true)
-      // Here you would typically send data to your backend
-      setName('')
-      setPhone('')
-      setEmail('')
-    }
   }
 
   return (

@@ -1,8 +1,11 @@
 import type { NextConfig } from "next";
 
-const nextConfig: any = {
-  turbo: {
-    enabled: false,
+const nextConfig: NextConfig = {
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
   },
 };
 

@@ -43,6 +43,78 @@ const quizSteps = [
   },
 ]
 
+function ProgressBar({ currentStep }: { currentStep: number }) {
+  const progress = ((currentStep + 1) / quizSteps.length) * 100
+  return (
+    <div className="w-full mb-6">
+      <div className="flex justify-between text-xs text-gray-500 mb-2">
+        <span>Прогресс</span>
+        <span>{Math.round(progress)}%</span>
+      </div>
+      <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+        <div 
+          className="h-full bg-gradient-to-r from-indigo-600 to-purple-600" 
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+    </div>
+  )
+}
+
+function StepContent({
+  currentStep,
+  formData,
+  updateForm,
+}: {
+  currentStep: number
+  formData: { name: string; email: string; companyName: string }
+  updateForm: (field: string, value: string) => void
+}) {
+  if (currentStep !== quizSteps.length - 1) return null
+
+  return (
+    <div className="mt-8">
+      <div className="space-y-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Ваше имя *
+          </label>
+          <input
+            type="text"
+            value={formData.name}
+            onChange={(e) => updateForm('name', e.target.value)}
+            required
+            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-600"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Email *
+          </label>
+          <input
+            type="email"
+            value={formData.email}
+            onChange={(e) => updateForm('email', e.target.value)}
+            required
+            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-600"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Название компании
+          </label>
+          <input
+            type="text"
+            value={formData.companyName}
+            onChange={(e) => updateForm('companyName', e.target.value)}
+            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-600"
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function Quiz() {
   const [currentStep, setCurrentStep] = useState(0)
   const [selectedOption, setSelectedOption] = useState('')
@@ -51,7 +123,6 @@ export default function Quiz() {
     email: '',
     companyName: '',
   })
-  const [showResults, setShowResults] = useState(false)
   const [quizSubmitted, setQuizSubmitted] = useState(false)
 
   const currentQuestion = quizSteps[currentStep]
@@ -72,78 +143,12 @@ export default function Quiz() {
     setSelectedOption('')
   }
 
-  const updateForm = (field: keyof typeof formData, value: string) => {
+  const updateForm = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }))
   }
 
   const handleSubmit = () => {
-    // In a real app, you would send this data to your backend
     setQuizSubmitted(true)
-  }
-
-  const ProgressBar = () => {
-    const progress = ((currentStep + 1) / quizSteps.length) * 100
-    return (
-      <div className="w-full mb-6">
-        <div className="flex justify-between text-xs text-gray-500 mb-2">
-          <span>Прогресс</span>
-          <span>{Math.round(progress)}%</span>
-        </div>
-        <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-          <div 
-            className="h-full bg-gradient-to-r from-indigo-600 to-purple-600" 
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div>
-      </div>
-    )
-  }
-
-  const StepContent = () => {
-    if (currentStep === quizSteps.length - 1) {
-      return (
-        <div className="mt-8">
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Ваше имя *
-              </label>
-              <input
-                type="text"
-                value={formData.name}
-                onChange={(e) => updateForm('name', e.target.value)}
-                required
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-600"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Email *
-              </label>
-              <input
-                type="email"
-                value={formData.email}
-                onChange={(e) => updateForm('email', e.target.value)}
-                required
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-600"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Название компании
-              </label>
-              <input
-                type="text"
-                value={formData.companyName}
-                onChange={(e) => updateForm('companyName', e.target.value)}
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-600"
-              />
-            </div>
-          </div>
-        </div>
-      )
-    }
-    return null
   }
 
   return (
@@ -166,7 +171,7 @@ export default function Quiz() {
           </div>
 
           <div className="bg-white dark:bg-zinc-800 rounded-2xl shadow-xl p-8 md:p-12">
-            <ProgressBar />
+            <ProgressBar currentStep={currentStep} />
 
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -201,7 +206,7 @@ export default function Quiz() {
               </div>
             </motion.div>
 
-            <StepContent />
+            <StepContent currentStep={currentStep} formData={formData} updateForm={updateForm} />
 
             <div className="mt-8 flex justify-between">
               <button
@@ -235,7 +240,7 @@ export default function Quiz() {
                 </button>
               ) : (
                 <button
-                  disabled={!selectedOption}
+                  disabled
                   className="px-8 py-3 rounded-lg text-white transition-all duration-300 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-50 cursor-not-allowed"
                 >
                   Выберите опцию
@@ -246,14 +251,12 @@ export default function Quiz() {
         </div>
       </div>
 
-      {/* Results Modal */}
       {quizSubmitted && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="fixed inset-0 z-50 flex items-center justify-center"
         >
-          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

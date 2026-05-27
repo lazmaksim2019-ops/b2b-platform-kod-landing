@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { TrendingUp, Shield, Users, Check, Zap } from 'lucide-react'
+import { TrendingUp, Shield, Users } from 'lucide-react'
 
 export default function Features() {
   return (

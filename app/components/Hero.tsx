@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Star, Zap, Users, Award } from 'lucide-react'
+import AnimatedCounter from './AnimatedCounter'
 
 export default function Hero() {
   return (
@@ -75,22 +76,30 @@ export default function Hero() {
           </a>
         </motion.div>
 
-        {/* Features Preview */}
+        {/* Stats Preview */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             viewport={{ once: true }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex items-start gap-4 p-6 rounded-xl bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+            className="group p-6 rounded-xl bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
           >
-            <Award className="w-10 h-10 text-indigo-600" />
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Экономия времени</h3>
-              <p className="text-gray-600 dark:text-gray-400">
-                Автоматизируйте рутинные задачи и освободите до 20 часов в неделю для каждого сотрудника.
-              </p>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-lg bg-indigo-100 dark:bg-indigo-900/40 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <Award className="w-6 h-6 text-indigo-600" />
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-indigo-600">
+                  <AnimatedCounter value={20} suffix="+" /> ч
+                </div>
+                <div className="text-xs text-gray-500 uppercase tracking-wider">в неделю</div>
+              </div>
             </div>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">Экономия времени</h3>
+            <p className="text-gray-600 dark:text-gray-400 text-sm">
+              Освободите до <strong>20 часов</strong> в неделю для каждого сотрудника за счёт автоматизации рутины.
+            </p>
           </motion.div>
 
           <motion.div 
@@ -98,15 +107,23 @@ export default function Hero() {
             viewport={{ once: true }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex items-start gap-4 p-6 rounded-xl bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+            className="group p-6 rounded-xl bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
           >
-            <Users className="w-10 h-10 text-emerald-600" />
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Масштабирование</h3>
-              <p className="text-gray-600 dark:text-gray-400">
-                Обрабатывайте в 3 раза больше заказов без увеличения штата.
-              </p>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <Users className="w-6 h-6 text-emerald-600" />
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-emerald-600">
+                  <AnimatedCounter value={3} suffix="x" />
+                </div>
+                <div className="text-xs text-gray-500 uppercase tracking-wider">больше заказов</div>
+              </div>
             </div>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">Масштабирование</h3>
+            <p className="text-gray-600 dark:text-gray-400 text-sm">
+              Обрабатывайте в <strong>3 раза</strong> больше заказов без увеличения штата.
+            </p>
           </motion.div>
 
           <motion.div 
@@ -114,15 +131,23 @@ export default function Hero() {
             viewport={{ once: true }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex items-start gap-4 p-6 rounded-xl bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+            className="group p-6 rounded-xl bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
           >
-            <Zap className="w-10 h-10 text-cyan-600" />
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Рост выручки</h3>
-              <p className="text-gray-600 dark:text-gray-400">
-                Увеличьте конверсию на 15-25% за счёт умных рекомендаций.
-              </p>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-lg bg-cyan-100 dark:bg-cyan-900/40 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <Zap className="w-6 h-6 text-cyan-600" />
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-cyan-600">
+                  <AnimatedCounter value={25} suffix="%" />
+                </div>
+                <div className="text-xs text-gray-500 uppercase tracking-wider">рост конверсии</div>
+              </div>
             </div>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">Рост выручки</h3>
+            <p className="text-gray-600 dark:text-gray-400 text-sm">
+              Увеличьте конверсию на <strong>15–25%</strong> за счёт умных рекомендаций ИИ.
+            </p>
           </motion.div>
         </div>
       </div>

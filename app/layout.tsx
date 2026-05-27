@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ThemeProvider } from "@/app/context/ThemeContext";
+import ScrollProgress from "@/app/components/ScrollProgress";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,17 +16,45 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Платформа К-О-Д — Автоматизация B2B бизнес-процессов",
-  description: "Интеллектуальная система автоматизации для владельцев и топ-менеджеров. Сокращайте рутину, управляйте спецификациями и оптимизируйте B2B-продажи с помощью ИИ-ассистентов.",
-  keywords: "автоматизация бизнеса, B2B, интеллектуальные алгоритмы, seamless-интеграции, платформа К-О-Д",
+  description:
+    "Интеллектуальная система автоматизации для владельцев и топ-менеджеров. Сокращайте рутину, управляйте спецификациями и оптимизируйте B2B-продажи с помощью ИИ-ассистентов.",
+  keywords:
+    "автоматизация бизнеса, B2B, интеллектуальные алгоритмы, seamless-интеграции, платформа К-О-Д",
   openGraph: {
     title: "Платформа К-О-Д — Автоматизация B2B бизнес-процессов",
-    description: "Интеллектуальная система автоматизации для владельцев и топ-менеджеров. Сокращайте рутину, управляйте спецификациями и оптимизируйте B2B-продажи с помощью ИИ-ассистентов.",
+    description:
+      "Интеллектуальная система автоматизации для владельцев и топ-менеджеров. Сокращайте рутину, управляйте спецификациями и оптимизируйте B2B-продажи с помощью ИИ-ассистентов.",
     type: "website",
+    siteName: "Платформа К-О-Д",
+    locale: "ru_RU",
     images: [{ url: "/logo.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     site: "@kod_platform",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  metadataBase: new URL("https://platforma-kod.vercel.app"),
+  alternates: {
+    canonical: "/",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Платформа К-О-Д",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  description:
+    "Интеллектуальная система автоматизации B2B бизнес-процессов. ИИ-ассистенты, seamless-интеграции, умная аналитика.",
+  offers: {
+    "@type": "Offer",
+    price: "5000",
+    priceCurrency: "RUB",
   },
 };
 
@@ -35,10 +65,40 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="ru"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme');
+                  if (!theme) {
+                    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                  }
+                  if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                  }
+                  document.documentElement.classList.remove('preload');
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body className="min-h-full flex flex-col">
+        <ThemeProvider>
+          <ScrollProgress />
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

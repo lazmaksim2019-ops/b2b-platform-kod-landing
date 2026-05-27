@@ -1,10 +1,14 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import ThemeToggle from './ThemeToggle'
+import AuthModal from './AuthModal'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [authOpen, setAuthOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,14 +28,14 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2 group">
+        <Link href="/" className="flex items-center gap-2 group">
           <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center">
             <span className="text-white font-bold text-xl">К</span>
           </div>
           <span className="text-xl font-bold text-gray-900 dark:text-white">
             <span className="text-indigo-600">Платформа К-О-Д</span>
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
@@ -61,13 +65,16 @@ export default function Header() {
           </a>
         </nav>
 
-        {/* Login Button */}
-        <a 
-          href="#" 
-          className="hidden sm-inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition-all duration-300 shadow-lg hover:shadow-indigo-500/20"
-        >
-          Войти
-        </a>
+        {/* Right actions */}
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <button
+            onClick={() => setAuthOpen(true)}
+            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-indigo-600 text-white font-medium hover:bg-indigo-700 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-indigo-500/20"
+          >
+            Войти
+          </button>
+        </div>
 
         {/* Mobile Menu Button */}
         <button 
@@ -107,16 +114,21 @@ export default function Header() {
               >
                 Тарифы
               </a>
-              <a 
-                href="#" 
-                className="inline-flex items-center justify-center px-6 py-3 text-lg font-bold text-white bg-indigo-600 rounded-full hover:bg-indigo-700 transition-all duration-300 shadow-lg hover:shadow-indigo-500/20 mt-8"
-              >
-                Войти
-              </a>
+              <div className="flex items-center justify-center gap-4 mt-8">
+                <button
+                  onClick={() => { setAuthOpen(true); setMobileMenuOpen(false) }}
+                  className="inline-flex items-center justify-center px-6 py-3 text-lg font-bold text-white bg-indigo-600 rounded-full hover:bg-indigo-700 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-indigo-500/20"
+                >
+                  Войти
+                </button>
+                <ThemeToggle />
+              </div>
             </div>
           </div>
         )}
       </div>
+
+      <AuthModal isOpen={authOpen} onClose={() => setAuthOpen(false)} />
     </header>
   )
 }

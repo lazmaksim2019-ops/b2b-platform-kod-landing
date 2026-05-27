@@ -2,7 +2,8 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { TrendingUp, Shield, Users, Check, Zap } from 'lucide-react'
+import { Check, Zap } from 'lucide-react'
+import AnimatedCounter from './AnimatedCounter'
 
 const formatNumber = (num: number) => 
   new Intl.NumberFormat('ru-RU', { 
@@ -135,13 +136,13 @@ export default function Calculator() {
                   <div>
                     <p className="text-sm text-indigo-100 mb-1">Экономия времени в месяц</p>
                     <p className="text-4xl font-bold">
-                      {formatNumber(timeSaved)} <span className="text-lg">часов</span>
+                      <AnimatedCounter value={timeSaved} suffix="" /> <span className="text-lg">часов</span>
                     </p>
                   </div>
                   <div>
                     <p className="text-sm text-emerald-100 mb-1">Рост выручки в месяц</p>
                     <p className="text-4xl font-bold">
-                      {formatNumber(revenueIncrease)} <span className="text-lg">₽</span>
+                      <AnimatedCounter value={revenueIncrease} suffix="" /> <span className="text-lg">₽</span>
                     </p>
                   </div>
                 </div>
