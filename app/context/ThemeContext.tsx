@@ -18,10 +18,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const stored = localStorage.getItem('theme') as Theme | null
     if (stored) {
       document.documentElement.classList.toggle('dark', stored === 'dark')
-      setTimeout(() => setTheme(stored as Theme), 0)
+      setTheme(stored)
     } else {
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
       document.documentElement.classList.toggle('dark', prefersDark)
+      setTheme(prefersDark ? 'dark' : 'light')
     }
   }, [])
 
