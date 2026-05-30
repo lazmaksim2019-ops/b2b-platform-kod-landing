@@ -6,22 +6,12 @@ import AnimatedCounter from './AnimatedCounter'
 
 export default function Hero() {
   return (
-<section id="hero" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-slate-50/50">
+<section id="hero" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-slate-50/50 dark:bg-zinc-900/50">
       {/* Animated background circles */}
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Main content */}
         <div className="text-center mb-12">
-<motion.h2
-  initial={{ opacity: 0 }}
-  viewport={{ once: true }}
-  animate={{ opacity: 1 }}
-  transition={{ duration: 0.5 }}
-  className="text-cyan-500 font-semibold tracking-wider uppercase text-sm mb-4"
->
-            Интеллектуальная автоматизация B2B
-          </motion.h2>
-          
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             viewport={{ once: true }}
@@ -35,17 +25,21 @@ export default function Hero() {
             <br />
             свой бизнес
             <br />
-            <span className="text-4xl md:text-6xl lg:text-7xl block mt-2 text-gray-600">
+            <span className="text-4xl md:text-6xl lg:text-7xl block mt-2 text-gray-600 dark:text-gray-400">
               с платформой К-О-Д
             </span>
           </motion.h1>
+          
+          <h2 className="text-cyan-700 dark:text-cyan-400 font-semibold tracking-wider uppercase text-sm mt-6 mb-4">
+            Интеллектуальная автоматизация B2B
+          </h2>
           
           <motion.p
             initial={{ opacity: 0 }}
             viewport={{ once: true }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mt-8 max-w-3xl mx-auto"
+            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mt-6 max-w-3xl mx-auto"
           >
             Платформа К-О-Д помогает владельцам и топ-менеджерам автоматизировать ключевые бизнес-процессы, 
             сокращать издержки и увеличивать выручку за счёт интеллектуальных алгоритмов и seamless-интеграций.
@@ -69,7 +63,7 @@ export default function Hero() {
           </a>
           <a 
             href="#quiz" 
-            className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-gray-700 transition-all duration-300 bg-white rounded-full border border-gray-200 hover:shadow-md hover:shadow-gray-200/30 hover:scale-105"
+            className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-gray-700 dark:text-gray-300 transition-all duration-300 bg-white dark:bg-zinc-800 rounded-full border border-gray-200 dark:border-zinc-700 hover:shadow-md hover:shadow-gray-200/30 hover:scale-105"
           >
             <Star className="w-5 h-5 mr-2" />
             Пройти тест

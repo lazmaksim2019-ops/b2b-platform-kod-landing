@@ -94,9 +94,15 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[70] focus:px-4 focus:py-2 focus:bg-indigo-600 focus:text-white focus:rounded-lg focus:shadow-lg"
+        >
+          Перейти к содержимому
+        </a>
         <ThemeProvider>
           <ScrollProgress />
-          {children}
+          <main id="main-content">{children}</main>
         </ThemeProvider>
       </body>
     </html>

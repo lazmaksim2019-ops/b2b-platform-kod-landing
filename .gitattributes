@@ -1,0 +1,8 @@
+# Hide config files from language stats
+*.js linguist-vendored
+*.config.js linguist-vendored
+*.config.ts linguist-vendored
+
+# Hide markdown docs and media from code stats
+*.md linguist-documentation
+public/* linguist-documentation

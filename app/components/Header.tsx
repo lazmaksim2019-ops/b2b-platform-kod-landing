@@ -22,7 +22,7 @@ export default function Header() {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-white/80 backdrop-blur-md shadow-sm py-3'
+          ? 'bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md shadow-sm py-3'
           : 'bg-transparent py-4'
       }`}
     >
@@ -77,40 +77,59 @@ export default function Header() {
         </div>
 
         {/* Mobile Menu Button */}
-        <button 
+        <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden text-gray-700"
+          className="md:hidden relative z-50 w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-gray-300 hover:bg-indigo-100 dark:hover:bg-zinc-700 transition-all duration-300"
+          aria-label={mobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
+          aria-expanded={mobileMenuOpen}
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {mobileMenuOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            )}
           </svg>
         </button>
 
         {/* Mobile Menu Overlay */}
         {mobileMenuOpen && (
-          <div className="fixed inset-0 z-40 bg-white/90 backdrop-blur-sm flex items-center justify-center">
+          <div className="fixed inset-0 z-40 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl flex items-center justify-center">
             <div className="text-center">
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-gray-300 hover:bg-indigo-100 dark:hover:bg-zinc-700 transition-all duration-300"
+                aria-label="Закрыть меню"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
               <a 
                 href="#features" 
-                className="block text-2xl font-bold text-gray-900 mb-6 hover:text-indigo-600 transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-2xl font-bold text-gray-900 dark:text-white mb-6 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
               >
                 Возможности
               </a>
               <a 
                 href="#calculator" 
-                className="block text-2xl font-bold text-gray-900 mb-6 hover:text-indigo-600 transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-2xl font-bold text-gray-900 dark:text-white mb-6 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
               >
                 Калькулятор
               </a>
               <a 
                 href="#quiz" 
-                className="block text-2xl font-bold text-gray-900 mb-6 hover:text-indigo-600 transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-2xl font-bold text-gray-900 dark:text-white mb-6 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
               >
                 Тест
               </a>
               <a 
                 href="#pricing" 
-                className="block text-2xl font-bold text-gray-900 mb-6 hover:text-indigo-600 transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-2xl font-bold text-gray-900 dark:text-white mb-6 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
               >
                 Тарифы
               </a>

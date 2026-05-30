@@ -81,7 +81,7 @@ export default function Pricing() {
         <div className="max-w-md mx-auto mb-12 text-center">
           <div className="inline-flex rounded-full bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 p-1 shadow-sm">
             <button
-              onClick={() => toggleBilling()}
+              onClick={() => setBillingCycle('monthly')}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                 billingCycle === 'monthly' 
                   ? 'bg-indigo-600 text-white' 
@@ -91,7 +91,7 @@ export default function Pricing() {
               Ежемесячно
             </button>
             <button
-              onClick={() => toggleBilling()}
+              onClick={() => setBillingCycle('yearly')}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${billingCycle === 'yearly' ? 'bg-indigo-600 text-white' : 'text-gray-700 dark:text-gray-300'}`}
             >
               Годовое

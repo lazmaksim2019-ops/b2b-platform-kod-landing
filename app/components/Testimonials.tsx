@@ -115,30 +115,36 @@ export default function Testimonials() {
           <div className="flex items-center justify-center gap-4 mt-8">
             <button
               onClick={prev}
-              className="p-2 rounded-full bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-gray-300 hover:bg-indigo-600 hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="p-3 rounded-full bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-gray-300 hover:bg-indigo-600 hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               aria-label="Предыдущий отзыв"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
 
-            <div className="flex gap-2">
+            <div className="flex items-center gap-1">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => { setDirection(index > current ? 1 : -1); setCurrent(index) }}
-                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 focus:outline-none ${
+                  className={`flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 focus:outline-none ${
                     index === current
-                      ? 'bg-indigo-600 w-6'
-                      : 'bg-gray-300 dark:bg-zinc-600 hover:bg-indigo-400'
+                      ? 'text-indigo-600'
+                      : 'text-gray-300 dark:text-zinc-600 hover:text-indigo-400'
                   }`}
                   aria-label={`Отзыв ${index + 1}`}
-                />
+                >
+                  <span className={`rounded-full transition-all duration-300 ${
+                    index === current
+                      ? 'w-6 h-2.5 bg-indigo-600'
+                      : 'w-2.5 h-2.5 bg-current'
+                  }`} />
+                </button>
               ))}
             </div>
 
             <button
               onClick={next}
-              className="p-2 rounded-full bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-gray-300 hover:bg-indigo-600 hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="p-3 rounded-full bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-gray-300 hover:bg-indigo-600 hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               aria-label="Следующий отзыв"
             >
               <ChevronRight className="w-5 h-5" />

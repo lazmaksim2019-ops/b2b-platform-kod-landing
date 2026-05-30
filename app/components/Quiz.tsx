@@ -74,43 +74,46 @@ function StepContent({
 
   return (
     <div className="mt-8">
-      <div className="space-y-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Ваше имя *
-          </label>
-          <input
-            type="text"
-            value={formData.name}
-            onChange={(e) => updateForm('name', e.target.value)}
-            required
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-600"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Email *
-          </label>
-          <input
-            type="email"
-            value={formData.email}
-            onChange={(e) => updateForm('email', e.target.value)}
-            required
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-600"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Название компании
-          </label>
-          <input
-            type="text"
-            value={formData.companyName}
-            onChange={(e) => updateForm('companyName', e.target.value)}
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-600"
-          />
-        </div>
-      </div>
+              <div className="space-y-4">
+                <div>
+                  <label htmlFor="quiz-name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Ваше имя *
+                  </label>
+                  <input
+                    id="quiz-name"
+                    type="text"
+                    value={formData.name}
+                    onChange={(e) => updateForm('name', e.target.value)}
+                    required
+                    className="w-full px-4 py-2 border border-gray-200 dark:border-zinc-600 rounded-lg bg-transparent text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-600"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="quiz-email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Email *
+                  </label>
+                  <input
+                    id="quiz-email"
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => updateForm('email', e.target.value)}
+                    required
+                    className="w-full px-4 py-2 border border-gray-200 dark:border-zinc-600 rounded-lg bg-transparent text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-600"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="quiz-company" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Название компании
+                  </label>
+                  <input
+                    id="quiz-company"
+                    type="text"
+                    value={formData.companyName}
+                    onChange={(e) => updateForm('companyName', e.target.value)}
+                    className="w-full px-4 py-2 border border-gray-200 dark:border-zinc-600 rounded-lg bg-transparent text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-600"
+                  />
+                </div>
+              </div>
     </div>
   )
 }
@@ -283,7 +286,7 @@ export default function Quiz() {
             <div className="text-center">
               <button
                 onClick={() => setQuizSubmitted(false)}
-                className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+                className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
               >
                 Закрыть
               </button>
