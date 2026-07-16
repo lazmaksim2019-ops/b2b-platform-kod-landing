@@ -43,13 +43,6 @@
   <img src="https://img.shields.io/badge/SEO-100%2F100-22c55e?style=for-the-badge&logo=googlesearchconsole&logoColor=white" alt="SEO 100" />
 </p>
 
-| Метрика | Значение |
-|---|---|---|
-| **Performance** | **95/100** |
-| **Accessibility** | **95/100** |
-| **Best Practices** | **100/100** |
-| **SEO** | **100/100** |
-
 ### Ключевые оптимизации
 
 - **SSG** — статическая генерация отдаёт готовый HTML за миллисекунды
