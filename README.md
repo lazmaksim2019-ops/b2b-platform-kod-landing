@@ -24,15 +24,14 @@
 </p>
 
 <p align="center">
-  <img src="hero_lp.png" alt="Платформа К-О-Д — Hero Section" width="100%" style="border-radius: 12px; max-width: 900px;" />
-</p>
-
-<p align="center">
   <b>Ультрасовременная промо-страница для платформы интеллектуальной автоматизации B2B бизнес-процессов. Mobile-First, 95+ Lighthouse, CLS = 0, полноценная тёмная тема.</b>
 </p>
 
 > **⚡ Бизнес-ценность:** Интерактивные механики прогрева лидов — умный квиз и динамический ROI-калькулятор — увеличивают конверсию в заявку на 42% по сравнению со статическими лендингами.
 
+<p align="center">
+  <img src="hero_lp.png" alt="Платформа К-О-Д — Hero Section" width="100%" style="border-radius: 12px; max-width: 900px;" />
+</p>
 ---
 
 ## ⚡ Google Lighthouse
