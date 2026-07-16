@@ -24,6 +24,10 @@
 </p>
 
 <p align="center">
+  <img src="hero_lp.png" alt="Платформа К-О-Д — Hero Section" width="100%" style="border-radius: 12px; max-width: 900px;" />
+</p>
+
+<p align="center">
   <b>Ультрасовременная промо-страница для платформы интеллектуальной автоматизации B2B бизнес-процессов. Mobile-First, 95+ Lighthouse, CLS = 0, полноценная тёмная тема.</b>
 </p>
 
@@ -270,9 +274,7 @@ docker compose up -d
 cp .env.example .env.local
 ```
 
-| Переменная | Обязательная | Описание |
-|---|---|---|
-| `NEXT_PUBLIC_SITE_URL` | Нет | URL для canonical/sitemap |
+> Переменные окружения в проекте не используются — все настройки заданы непосредственно в `layout.tsx` и `next.config.ts`. Файл `.env.example` приведён для совместимости с CI/CD.
 
 ---
 
