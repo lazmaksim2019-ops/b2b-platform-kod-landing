@@ -20,7 +20,7 @@
 <h1 align="center">💎 Платформа К-О-Д — Высокопроизводительный B2B Landing Page</h1>
 
 <p align="center">
-  <a href="https://b2b-platform-kod-landing.onrender.com/" target="_blank"><b>🔗 Живое демо →</b></a>
+  <a href="https://platforma-kod.vercel.app/" target="_blank"><b>🔗 Живое демо →</b></a>
 </p>
 
 <p align="center">
@@ -41,12 +41,11 @@
 </p>
 
 | Метрика | Значение |
-|---|---|
-| **LCP** | 3.0 с |
-| **TBT** | 50 мс |
-| **CLS** | **0.00** |
-| **FCP** | 0.8 с |
-| **SI** | 1.2 с |
+|---|---|---|
+| **Performance** | **95/100** |
+| **Accessibility** | **95/100** |
+| **Best Practices** | **100/100** |
+| **SEO** | **100/100** |
 
 ### Ключевые оптимизации
 
@@ -195,7 +194,7 @@ landing-page/
 ```bash
 # Клонирование
 git clone https://github.com/lazmaksim2019-ops/b2b-platform-kod-landing.git
-cd b2b-platform-kod-landing/landing-page
+cd b2b-platform-kod-landing
 
 # Установка зависимостей
 npm install
@@ -222,9 +221,6 @@ npm run typecheck
 
 # Линтинг
 npm run lint
-
-# E2E (Playwright)
-npx playwright test
 ```
 
 ---
@@ -258,7 +254,7 @@ docker compose up -d
 |---|---|---|
 | Lint | `npm run lint` | ESLint — проверка кода |
 | Typecheck | `npm run typecheck` | TypeScript — строгая типизация |
-| Test | `npm test` | Vitest — 9 unit-тестов |
+| Test | `npm test` | Vitest — 9 тестов (3 файла) |
 | Build | `npm run build` | Next.js SSG — production сборка |
 | Docker | `docker buildx` | Push образа в GHCR |
 

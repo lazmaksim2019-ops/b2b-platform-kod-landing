@@ -24,9 +24,6 @@ test-watch:
 test-coverage:
 	npx vitest run --coverage --reporter=verbose
 
-test-e2e:
-	npx playwright test
-
 docker-build:
 	docker compose build
 
@@ -34,4 +31,4 @@ docker-up:
 	docker compose up -d
 
 clean:
-	rm -rf .next coverage node_modules
+	rm -rf .next coverage node_modules || Remove-Item -Recurse -Force ".next", "coverage", "node_modules" -ErrorAction SilentlyContinue
