@@ -14,6 +14,7 @@
 <p align="center">
   <a href="https://github.com/lazmaksim2019-ops/b2b-platform-kod-landing" target="_blank"><img src="https://img.shields.io/github/last-commit/lazmaksim2019-ops/b2b-platform-kod-landing?style=for-the-badge&logo=github&color=8b5cf6" alt="Last Commit" /></a>
   <a href="https://github.com/lazmaksim2019-ops/b2b-platform-kod-landing/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/lazmaksim2019-ops/b2b-platform-kod-landing/ci.yml?branch=master&style=for-the-badge&logo=githubactions&label=CI/CD" alt="CI/CD Status" /></a>
+  <a href="https://codecov.io/gh/lazmaksim2019-ops/b2b-platform-kod-landing"><img src="https://img.shields.io/codecov/c/github/lazmaksim2019-ops/b2b-platform-kod-landing?style=for-the-badge&logo=codecov&label=Coverage" alt="Codecov" /></a>
 </p>
 
 <h1 align="center">💎 Платформа К-О-Д — Высокопроизводительный B2B Landing Page</h1>
@@ -248,7 +249,7 @@ docker compose up -d
 
 <p align="center">
   <a href="https://github.com/lazmaksim2019-ops/b2b-platform-kod-landing/actions/workflows/ci.yml"><img src="https://github.com/lazmaksim2019-ops/b2b-platform-kod-landing/actions/workflows/ci.yml/badge.svg?branch=master" alt="CI/CD" /></a>
-  <a href="https://github.com/lazmaksim2019-ops/b2b-platform-kod-landing/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/lazmaksim2019-ops/b2b-platform-kod-landing/ci.yml?branch=master&style=for-the-badge&logo=githubactions&label=Lint%20%26%20Typecheck%20%26%20Test%20%26%20Build" alt="CI/CD Pipeline" /></a>
+  <a href="https://codecov.io/gh/lazmaksim2019-ops/b2b-platform-kod-landing"><img src="https://codecov.io/gh/lazmaksim2019-ops/b2b-platform-kod-landing/branch/master/graph/badge.svg" alt="Coverage" /></a>
 </p>
 
 Проект использует **GitHub Actions** для автоматизации всех этапов проверки качества. На каждый push в `master` выполняется полный пайплайн:
