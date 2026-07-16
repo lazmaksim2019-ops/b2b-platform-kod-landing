@@ -152,31 +152,7 @@ export default function Quiz() {
     setFormData(prev => ({ ...prev, [field]: value }))
   }
 
-  const handleSubmit = async () => {
-    const finalAnswers = { ...answers, [quizSteps[currentStep].id]: selectedOption }
-    const answersText = Object.entries(finalAnswers)
-      .map(([key, val]) => {
-        const step = quizSteps.find(s => s.id === key)
-        const option = step?.options.find(o => o.id === val)
-        return `${step?.question || key}: ${option?.label || val}`
-      })
-      .join('\n')
-
-    try {
-      await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          companyName: formData.companyName,
-          source: 'quiz',
-          message: answersText,
-        }),
-      })
-    } catch (e) {
-      console.error('Failed to submit quiz', e)
-    }
+  const handleSubmit = () => {
     setQuizSubmitted(true)
   }
 

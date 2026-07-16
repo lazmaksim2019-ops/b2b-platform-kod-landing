@@ -77,14 +77,8 @@ graph TD
         M[AnimatePresence]
     end
     
-    subgraph "API Layer"
-        N[/api/contact] --> O[Telegram Bot API]
-        P[/api/health]
-    end
-    
     C --> H
     C --> K
-    F --> N
 ```
 
 ### Структура данных
@@ -93,8 +87,7 @@ graph TD
 Клиент ──► Next.js SSG ──► CDN (HTML ready)
               │
               ├── Theme: Context + localStorage + prefers-color-scheme
-              ├── Forms: Calculator/Quiz ──► /api/contact ──► Telegram
-              └── CI/CD: GitHub Actions ──► Docker ──► Registry
+              └── Forms: Calculator/Quiz (client-side, stub)
 ```
 
 ---
@@ -103,7 +96,6 @@ graph TD
 
 - **📊 Интерактивный ROI-калькулятор** — ползунки с spring-анимацией чисел через MotionValue
 - **🎯 Умный квиз-подборщик** — пошаговая квалификация лида с сохранением ответов
-- **📬 Telegram-уведомления** — заявки из форм уходят в Telegram через API Route
 - **🌙 Light/Dark темизация** — inline-скрипт в `<head>` исключает FOUC
 - **📱 Mobile-First** — от 320px до UltraWide, адаптивная сетка
 - **♿ Доступность (a11y)** — WCAG, skip-to-content, focus-visible, ARIA
@@ -148,12 +140,6 @@ graph TD
 
 **Решение:** `AnimatePresence` с анимацией высоты (`height: 0 → auto`, `opacity: 0 → 1`). CLS = **0.00**.
 
-### 4. Telegram-уведомления без бэкенда
-
-**Вызов:** Формы на лендинге не отправляют данные никуда.
-
-**Решение:** Next.js API Route (`/api/contact`) шлёт заявки в Telegram Bot API. Работает даже бесплатно на Vercel/Render. Graceful fallback при отсутствии токена.
-
 ---
 
 ## 📂 Структура проекта
@@ -161,10 +147,7 @@ graph TD
 ```
 landing-page/
 ├── app/
-│   ├── __tests__/            # Vitest unit tests
-│   ├── api/
-│   │   ├── contact/route.ts  # Telegram API proxy
-│   │   └── health/route.ts   # Health check
+│   ├── __tests__/             # Vitest unit tests
 │   ├── components/
 │   │   ├── Header.tsx           # Scroll-aware навигация + mobile overlay
 │   │   ├── Hero.tsx             # Главный экран + анимированные счётчики
@@ -179,6 +162,7 @@ landing-page/
 │   │   ├── AuthModal.tsx        # Модалка входа/регистрации
 │   │   ├── ThemeToggle.tsx      # Переключатель темы
 │   │   ├── ScrollProgress.tsx   # Индикатор прокрутки
+│   │   ├── ScrollToTop.tsx      # Кнопка «наверх»
 │   │   └── AnimatedCounter.tsx  # Счётчик на MotionValue
 │   ├── context/
 │   │   └── ThemeContext.tsx      # Глобальный контекст темы
@@ -278,11 +262,7 @@ cp .env.example .env.local
 
 | Переменная | Обязательная | Описание |
 |---|---|---|
-| `TELEGRAM_BOT_TOKEN` | Нет | Токен бота Telegram для уведомлений |
-| `TELEGRAM_CHAT_ID` | Нет | ID чата Telegram |
 | `NEXT_PUBLIC_SITE_URL` | Нет | URL для canonical/sitemap |
-
-> **Примечание:** Если токен не указан, формы работают без отправки (graceful degradation).
 
 ---
 
