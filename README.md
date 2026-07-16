@@ -1,13 +1,19 @@
 <p align="center">
   <div align="center">
-    <img src="https://img.shields.io/badge/Next.js-16.2_/_SSG-black?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js" />
-    <img src="https://img.shields.io/badge/React-19_Stable-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React 19" />
-    <img src="https://img.shields.io/badge/TypeScript-5.x-blue?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
-    <img src="https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS v4" />
-    <img src="https://img.shields.io/badge/Framer_Motion-12-ff69b4?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" />
-    <img src="https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white" alt="Vitest" />
-    <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
+    <a href="https://github.com/lazmaksim2019-ops/b2b-platform-kod-landing/actions/workflows/ci.yml"><img src="https://github.com/lazmaksim2019-ops/b2b-platform-kod-landing/actions/workflows/ci.yml/badge.svg?branch=master" alt="CI/CD" /></a>
+    <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-16.2_/_SSG-black?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js" /></a>
+    <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-19_Stable-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React 19" /></a>
+    <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.x-blue?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" /></a>
+    <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS v4" /></a>
+    <a href="https://www.framer.com/motion/"><img src="https://img.shields.io/badge/Framer_Motion-12-ff69b4?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" /></a>
+    <a href="https://vitest.dev/"><img src="https://img.shields.io/badge/Tests-Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white" alt="Vitest" /></a>
+    <a href="https://www.docker.com/"><img src="https://img.shields.io/badge/Docker-ready-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" /></a>
   </div>
+</p>
+
+<p align="center">
+  <a href="https://github.com/lazmaksim2019-ops/b2b-platform-kod-landing" target="_blank"><img src="https://img.shields.io/github/last-commit/lazmaksim2019-ops/b2b-platform-kod-landing?style=for-the-badge&logo=github&color=8b5cf6" alt="Last Commit" /></a>
+  <a href="https://github.com/lazmaksim2019-ops/b2b-platform-kod-landing/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/lazmaksim2019-ops/b2b-platform-kod-landing/ci.yml?branch=master&style=for-the-badge&logo=githubactions&label=CI/CD" alt="CI/CD Status" /></a>
 </p>
 
 <h1 align="center">💎 Платформа К-О-Д — Высокопроизводительный B2B Landing Page</h1>
@@ -240,15 +246,22 @@ docker compose up -d
 
 ## 🔄 CI/CD
 
-Проект использует **GitHub Actions** для автоматизации:
+<p align="center">
+  <a href="https://github.com/lazmaksim2019-ops/b2b-platform-kod-landing/actions/workflows/ci.yml"><img src="https://github.com/lazmaksim2019-ops/b2b-platform-kod-landing/actions/workflows/ci.yml/badge.svg?branch=master" alt="CI/CD" /></a>
+  <a href="https://github.com/lazmaksim2019-ops/b2b-platform-kod-landing/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/lazmaksim2019-ops/b2b-platform-kod-landing/ci.yml?branch=master&style=for-the-badge&logo=githubactions&label=Lint%20%26%20Typecheck%20%26%20Test%20%26%20Build" alt="CI/CD Pipeline" /></a>
+</p>
+
+Проект использует **GitHub Actions** для автоматизации всех этапов проверки качества. На каждый push в `master` выполняется полный пайплайн:
 
 | Этап | Команда | Описание |
 |---|---|---|
-| Lint | `npm run lint` | ESLint |
-| Typecheck | `npm run typecheck` | TypeScript |
-| Test | `npm test` | Vitest |
-| Build | `npm run build` | Next.js SSG |
-| Docker | `docker buildx` | Push в GHCR |
+| Lint | `npm run lint` | ESLint — проверка кода |
+| Typecheck | `npm run typecheck` | TypeScript — строгая типизация |
+| Test | `npm test` | Vitest — 9 unit-тестов |
+| Build | `npm run build` | Next.js SSG — production сборка |
+| Docker | `docker buildx` | Push образа в GHCR |
+
+> **🔗 Ссылка:** [Открыть пайплайн на GitHub →](https://github.com/lazmaksim2019-ops/b2b-platform-kod-landing/actions/workflows/ci.yml)
 
 ---
 
