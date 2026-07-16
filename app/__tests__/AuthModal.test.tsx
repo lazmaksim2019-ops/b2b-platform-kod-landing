@@ -52,4 +52,29 @@ describe('AuthModal', () => {
     await user.type(input, 'test@test.com')
     expect(input).toHaveValue('test@test.com')
   })
+
+  it('submits login form', async () => {
+    const user = userEvent.setup()
+    const onClose = vi.fn()
+    render(<AuthModal isOpen={true} onClose={onClose} />)
+    await user.type(screen.getByPlaceholderText('mail@example.com'), 'test@test.com')
+    await user.type(screen.getByPlaceholderText('••••••••'), 'password123')
+    await user.click(screen.getByRole('button', { name: 'Войти' }))
+  })
+
+  it('switches mode via link', async () => {
+    const user = userEvent.setup()
+    render(<AuthModal isOpen={true} onClose={() => {}} />)
+    await user.click(screen.getByText('Регистрация'))
+    await user.click(screen.getByText('Войти'))
+    expect(screen.getByRole('heading', { name: 'Войти в аккаунт' })).toBeInTheDocument()
+  })
+
+  it('updates password on input', async () => {
+    const user = userEvent.setup()
+    render(<AuthModal isOpen={true} onClose={() => {}} />)
+    const input = screen.getByPlaceholderText('••••••••')
+    await user.type(input, 'mypassword')
+    expect(input).toHaveValue('mypassword')
+  })
 })

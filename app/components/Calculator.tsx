@@ -5,13 +5,13 @@ import { motion } from 'framer-motion'
 import { Check, Zap } from 'lucide-react'
 import AnimatedCounter from './AnimatedCounter'
 
-const formatNumber = (num: number) => 
+export const formatNumber = (num: number) => 
   new Intl.NumberFormat('ru-RU', { 
     maximumFractionDigits: 0,
     useGrouping: true,
   }).format(num)
 
-const calculateResults = (employees: number, turnover: number) => {
+export const calculateResults = (employees: number, turnover: number) => {
   const timeSaved = employees * 4 // 4 hours saved per employee
   const revenueIncrease = turnover * 0.05 // 5% revenue increase
   return {

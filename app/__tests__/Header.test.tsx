@@ -77,6 +77,30 @@ describe('Header', () => {
     expect(menuBtn).toHaveAttribute('aria-expanded', 'true')
   })
 
+  it('mobile menu shows navigation links', () => {
+    render(<Header />)
+    act(() => { screen.getByLabelText('Открыть меню').click() })
+    const links = screen.getAllByText('Возможности')
+    expect(links.length).toBeGreaterThanOrEqual(2)
+  })
+
+  it('mobile menu login button opens auth modal', () => {
+    render(<Header />)
+    act(() => { screen.getByLabelText('Открыть меню').click() })
+    const loginBtns = screen.getAllByText('Войти')
+    const mobileLogin = loginBtns[loginBtns.length - 1]
+    act(() => { mobileLogin.click() })
+    const modal = screen.getByTestId('auth-modal')
+    expect(modal).toHaveAttribute('data-open', 'true')
+  })
+
+  it('mobile menu has close button', () => {
+    render(<Header />)
+    act(() => { screen.getByLabelText('Открыть меню').click() })
+    const closeBtns = screen.getAllByLabelText('Закрыть меню')
+    expect(closeBtns).toHaveLength(2)
+  })
+
   it('renders theme toggle', () => {
     render(<Header />)
     expect(screen.getByTestId('theme-toggle')).toBeInTheDocument()
