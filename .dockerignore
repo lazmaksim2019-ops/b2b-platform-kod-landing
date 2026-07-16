@@ -1,0 +1,9 @@
+node_modules
+.git
+.env*
+*.md
+.gitignore
+.gitattributes
+.next
+coverage
+lighthouse-report*.json

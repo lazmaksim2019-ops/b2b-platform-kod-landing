@@ -121,6 +121,7 @@ function StepContent({
 export default function Quiz() {
   const [currentStep, setCurrentStep] = useState(0)
   const [selectedOption, setSelectedOption] = useState('')
+  const [answers, setAnswers] = useState<Record<string, string>>({})
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -135,6 +136,7 @@ export default function Quiz() {
   }
 
   const nextStep = () => {
+    setAnswers(prev => ({ ...prev, [quizSteps[currentStep].id]: selectedOption }))
     if (currentStep < quizSteps.length - 1) {
       setCurrentStep(currentStep + 1)
       setSelectedOption('')
@@ -143,14 +145,38 @@ export default function Quiz() {
 
   const goToStep = (step: number) => {
     setCurrentStep(step)
-    setSelectedOption('')
+    setSelectedOption(answers[quizSteps[step]?.id] || '')
   }
 
   const updateForm = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }))
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    const finalAnswers = { ...answers, [quizSteps[currentStep].id]: selectedOption }
+    const answersText = Object.entries(finalAnswers)
+      .map(([key, val]) => {
+        const step = quizSteps.find(s => s.id === key)
+        const option = step?.options.find(o => o.id === val)
+        return `${step?.question || key}: ${option?.label || val}`
+      })
+      .join('\n')
+
+    try {
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          companyName: formData.companyName,
+          source: 'quiz',
+          message: answersText,
+        }),
+      })
+    } catch (e) {
+      console.error('Failed to submit quiz', e)
+    }
     setQuizSubmitted(true)
   }
 

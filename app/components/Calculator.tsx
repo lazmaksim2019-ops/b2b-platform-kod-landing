@@ -38,9 +38,24 @@ export default function Calculator() {
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => setPhone(e.target.value)
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (name && phone && email) {
+    if (name && email) {
+      try {
+        await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            email,
+            phone,
+            source: 'calculator',
+            message: `Запрос аудита: ${employees} сотрудников, оборот ${formatNumber(turnover)} ₽. Экономия: ${timeSaved} ч/мес, рост выручки: ${formatNumber(revenueIncrease)} ₽/мес`,
+          }),
+        })
+      } catch (e) {
+        console.error('Failed to send audit request', e)
+      }
       setModalSubmitted(true)
     }
   }
