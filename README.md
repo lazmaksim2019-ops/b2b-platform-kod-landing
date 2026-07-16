@@ -20,7 +20,7 @@
 <h1 align="center">💎 Платформа К-О-Д — Высокопроизводительный B2B Landing Page</h1>
 
 <p align="center">
-  <a href="https://platforma-kod.vercel.app/" target="_blank"><b>🔗 Живое демо →</b></a>
+  <a href="https://b2b-platform-kod-landing.onrender.com/" target="_blank"><b>🔗 Живое демо →</b></a>
 </p>
 
 <p align="center">
