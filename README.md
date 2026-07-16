@@ -258,8 +258,8 @@ docker compose up -d
 | Lint | `npm run lint` | ESLint — проверка кода |
 | Typecheck | `npm run typecheck` | TypeScript — строгая типизация |
 | Test | `npm test` | Vitest — 9 тестов (3 файла) |
+| Coverage | `npm run test:coverage` | Загрузка на Codecov |
 | Build | `npm run build` | Next.js SSG — production сборка |
-| Docker | `docker buildx` | Push образа в GHCR |
 
 > **🔗 Ссылка:** [Открыть пайплайн на GitHub →](https://github.com/lazmaksim2019-ops/b2b-platform-kod-landing/actions/workflows/ci.yml)
 
