@@ -1,21 +1,34 @@
 import { describe, it, expect } from 'vitest'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import { ThemeProvider } from '../context/ThemeContext'
+import ThemeToggle from '../components/ThemeToggle'
 
 describe('ThemeToggle', () => {
-  it('renders theme toggle component', () => {
-    const { container } = render(
-      <div data-testid="theme-toggle-placeholder">Theme toggle needs ThemeProvider</div>
+  it('renders toggle button', () => {
+    render(
+      <ThemeProvider>
+        <ThemeToggle />
+      </ThemeProvider>
     )
-    expect(container.firstChild).toBeInTheDocument()
+    expect(screen.getByRole('button')).toBeInTheDocument()
   })
-})
 
-describe('Accessibility', () => {
-  it('page has skip-to-content link', () => {
-    const skipLink = document.createElement('a')
-    skipLink.href = '#main-content'
-    skipLink.textContent = 'Перейти к содержимому'
-    expect(skipLink.getAttribute('href')).toBe('#main-content')
-    expect(skipLink.textContent).toContain('Перейти к содержимому')
+  it('has accessible label', () => {
+    render(
+      <ThemeProvider>
+        <ThemeToggle />
+      </ThemeProvider>
+    )
+    expect(screen.getByLabelText('Включить тёмную тему')).toBeInTheDocument()
+  })
+
+  it('renders Moon icon in light mode', () => {
+    render(
+      <ThemeProvider>
+        <ThemeToggle />
+      </ThemeProvider>
+    )
+    const svg = document.querySelector('svg')
+    expect(svg).toBeInTheDocument()
   })
 })

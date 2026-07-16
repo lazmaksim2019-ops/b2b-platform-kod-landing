@@ -12,6 +12,23 @@ if (typeof IntersectionObserver === 'undefined') {
   }
   Object.defineProperty(window, 'IntersectionObserver', {
     value: MockIntersectionObserver,
+    writable: true,
+  })
+}
+
+if (typeof window.matchMedia !== 'function') {
+  Object.defineProperty(window, 'matchMedia', {
+    writable: true,
+    value: (query: string) => ({
+      matches: query === '(prefers-color-scheme: dark)' ? false : false,
+      media: query,
+      onchange: null,
+      addListener: () => {},
+      removeListener: () => {},
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      dispatchEvent: () => false,
+    }),
   })
 }
 
